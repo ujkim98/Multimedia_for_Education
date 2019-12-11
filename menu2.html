@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>    
+<meta charset="UTF-8">
+<title>LMK</title>
+    
+<style>
+    h1{
+        font-size: 40px;
+        text-decoration: underline;
+    }
+h2 {
+        color: saddlebrown;
+        font-size: 30px;
+    }
+p {
+        color: brown;
+        font-size: 20px;
+        font-weight: bold;
+    }
+#topMenu {
+                        height: 30px;
+                        width: 900px;
+                }
+
+#topMenu ul li {
+                        list-style: none;
+                        color: white;
+                        background-color: #2d2d2d;
+                        float: left;
+                        line-height: 30px;
+                        vertical-align: middle;
+                        text-align: center;
+                }
+
+#topMenu .menuLink {
+                        text-decoration:none;
+                        color: white;
+                        display: block;
+                        width: 110px;
+                        font-size: 15px;
+                        font-weight: bold;
+                        font-family: "Trebuchet MS";
+                }
+#topMenu .menuLink:hover {
+                        color: red;
+                        background-color: #4d4d4d;
+                }
+</style>
+
+<script src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>
+<script src="http://code.createjs.com/tweenjs-0.4.0.min.js"></script>
+<script src="http://code.createjs.com/movieclip-0.6.0.min.js"></script>
+<script src="5s.js"></script>
+<script src="10s.js"></script>
+
+<script>
+var canvasa, stagea, exportRoota;
+var canvasb, stageb, exportRootb;
+
+function init() {
+    setTimeout(wakeUpUser1, 60000);
+    function wakeUpUser1() {
+        alert("Focus on your studying!");
+    }
+    setTimeout(wakeUpUser2, 120000);
+    function wakeUpUser2() {
+        alert("Focus on your studying!");
+    }
+    setTimeout(wakeUpUser3, 180000);
+    function wakeUpUser3() {
+        alert("Focus on your studying!");
+    }
+    
+	canvasa = document.getElementById("canvasa");
+	exportRoota = new lib._5s();
+	stagea = new createjs.Stage(canvasa);
+	stagea.addChild(exportRoota);
+	stagea.update();
+	createjs.Ticker.setFPS(1);
+	createjs.Ticker.addEventListener("tick", stagea);//1번째
+    
+    canvasb = document.getElementById("canvasb");
+	exportRootb = new lib._10s();
+	stageb = new createjs.Stage(canvasb);
+	stageb.addChild(exportRootb);
+	stageb.update();
+	createjs.Ticker.setFPS(1);
+	createjs.Ticker.addEventListener("tick", stageb);//2번째
+}
+    
+function myFunctiona(){alert("5 Seconds"); }//1번째
+function myFunctionb(){alert("5s : -50% = Xs : -100% >> X = 10 Seconds"); }//2번째
+</script>
+    
+</head>
+    
+<body onload="init();" style="background-color:#D4D4D4">
+    
+<h1>LMK : Learn Math easily with Kim</h1>
+    
+<nav id="topMenu" >
+		<ul>
+			<li><a class="menuLink" href="home.html">Home</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu1.html">Probability</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu2.html">Ratio</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu3.html">Shape</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu4.html">Coordinate</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu5.html">Property</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu6.html">Random</a></li>
+		</ul>
+</nav>
+    
+<h2>[Learning ratio1]</h2>   
+<canvas id="canvasa" width="550" height="400" style="background-color:#ffffff"></canvas>   
+<p id="q1">Check the time that 100% shape changes to 50% shape.</p>
+<button type="button" onclick="myFunctiona()">Do you want to see the answer?</button>
+    
+<h2>[Learning ratio2]</h2>    
+<canvas id="canvasb" width="550" height="400" style="background-color:#ffffff"></canvas>    
+<p id="q2">Then how much time it will take for 50% to 0% shape?</p>
+<button type="button" onclick="myFunctionb()">Do you want to see the answer?</button>
+    
+</body>
+</html>

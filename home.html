@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>    
+<meta charset="UTF-8">
+    
+<title>LMK</title>   
+    
+<style>
+h1{
+        font-size: 40px;
+        text-decoration: underline;
+    }
+h1.bridge{
+        font-size: 30px;
+        text-decoration: none;
+    }
+#topMenu {
+                        height: 30px;
+                        width: 900px;
+                }
+
+#topMenu ul li {
+                        list-style: none;
+                        color: white;
+                        background-color: #2d2d2d;
+                        float: left;
+                        line-height: 30px;
+                        vertical-align: middle;
+                        text-align: center;
+                }
+
+#topMenu .menuLink {
+                        text-decoration:none;
+                        color: white;
+                        display: block;
+                        width: 110px;
+                        font-size: 15px;
+                        font-weight: bold;
+                        font-family: "Trebuchet MS";
+                }
+#topMenu .menuLink:hover {
+                        color: red;
+                        background-color: #4d4d4d;
+                }
+</style>
+
+<script src="http://code.createjs.com/createjs-2013.09.25.min.js"></script>
+    
+<script>
+	var stage;
+	var circle;
+	var bitmap;
+	
+	function init () {
+
+    stage = new createjs.Stage("canvasf");
+	
+	bitmap = new createjs.Bitmap("math.png");
+	stage.addChild(bitmap);
+	
+    circle = new createjs.Shape().set({x:50, y:50});
+	circle.graphics.setStrokeStyle(5).beginStroke("lightyellow").drawCircle(10, 10, 55);
+
+	bitmap.mask = circle;
+	stage.addChild(bitmap);
+	stage.addChild(circle);
+
+    stage.update();
+		
+	createjs.Ticker.setFPS(60);
+
+    createjs.Ticker.addEventListener("tick", handleTick);
+    createjs.Tween.get(circle, {loop:true}).to({x:580, y:200, scaleX:4, scaleY:4} , 3000 ).to({ x:50, y:50 ,scaleX:1, scaleY:1} ,3000);
+   }
+
+    function handleTick() {			
+    stage.update();
+	}   
+</script>
+    
+</head>
+
+<body onload="init();" style="background-color:#D4D4D4">
+<h1>LMK : Learn Math easily with Kim</h1>
+
+<nav id="topMenu" >
+		<ul>
+            <li><a class="menuLink" href="home.html">Home</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu1.html">Probability</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu2.html">Ratio</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu3.html">Shape</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu4.html">Coordinate</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu5.html">Property</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu6.html">Random</a></li>
+		</ul>
+</nav>
+
+<h1 class="bridge">Studying Math is not difficult!</h1>
+    
+<canvas id="canvasf" width="960" height="580"></canvas>
+    
+</body>    
+</html>

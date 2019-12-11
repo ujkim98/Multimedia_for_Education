@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>    
+<meta charset="UTF-8">
+<title>LMK</title>
+    
+<style>
+h1 {
+        font-size: 40px;
+        text-decoration: underline;
+    }
+h2 {
+        color: saddlebrown;
+        font-size: 30px;
+    }
+p {
+        color: brown;
+        font-size: 20px;
+        font-weight: bold;
+    }
+#topMenu {
+                        height: 30px;
+                        width: 900px;
+                }
+
+#topMenu ul li {
+                        list-style: none;
+                        color: white;
+                        background-color: #2d2d2d;
+                        float: left;
+                        line-height: 30px;
+                        vertical-align: middle;
+                        text-align: center;
+                }
+
+#topMenu .menuLink {
+                        text-decoration:none;
+                        color: white;
+                        display: block;
+                        width: 110px;
+                        font-size: 15px;
+                        font-weight: bold;
+                        font-family: "Trebuchet MS";
+                }
+#topMenu .menuLink:hover {
+                        color: red;
+                        background-color: #4d4d4d;
+                }
+</style>
+
+<script src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>
+<script src="http://code.createjs.com/tweenjs-0.4.0.min.js"></script>
+<script src="http://code.createjs.com/movieclip-0.6.0.min.js"></script>
+<script src="Guess.js"></script>    
+    
+<script>
+var canvasc, stagec, exportRootc;
+
+function init() {
+    setTimeout(wakeUpUser1, 60000);
+    function wakeUpUser1() {
+        alert("Focus on your studying!");
+    }
+    
+    setTimeout(wakeUpUser2, 120000);
+    function wakeUpUser2() {
+        alert("Focus on your studying!");
+    }
+    
+    setTimeout(wakeUpUser3, 180000);
+    function wakeUpUser3() {
+        alert("Focus on your studying!");
+    }
+    
+    canvasc = document.getElementById("canvasc");
+	exportRootc = new lib.Guess();
+
+	stagec = new createjs.Stage(canvasc);
+	stagec.addChild(exportRootc);
+	stagec.update();
+
+	createjs.Ticker.setFPS(1);
+	createjs.Ticker.addEventListener("tick", stagec);//3번째
+}
+    
+function myFunctionc(){alert("Because it was square that all sides are same, right angle isosceles triangle will occur."); }//3번째
+    
+</script>
+</head>
+    
+<body onload="init();" style="background-color:#D4D4D4">
+
+<h1>LMK : Learn Math easily with Kim</h1>
+    
+<nav id="topMenu" >
+		<ul>
+            <li><a class="menuLink" href="home.html">Home</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu1.html">Probability</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu2.html">Ratio</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu3.html">Shape</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu4.html">Coordinate</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu5.html">Property</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu6.html">Random</a></li>
+		</ul>
+</nav>
+    
+<h2>[Guessing shape]</h2>
+<canvas id="canvasc" width="550" height="400" style="background-color:#ffffff"></canvas>
+<p id="q3">If we cut square following diagonal, what shape will occur?</p>
+<button type="button" onclick="myFunctionc()">Can you guess?</button>
+    
+</body>
+</html>

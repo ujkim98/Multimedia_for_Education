@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">    
+<title>LMK</title>
+    
+<style>
+h1 {
+        font-size: 40px;
+        text-decoration: underline;
+    }
+h2 {
+        color: saddlebrown;
+        font-size: 30px;
+    }
+p {
+        color: brown;
+        font-size: 20px;
+        font-weight: bold;
+    }
+#topMenu {
+                        height: 30px;
+                        width: 900px;
+                }
+
+#topMenu ul li {
+                        list-style: none;
+                        color: white;
+                        background-color: #2d2d2d;
+                        float: left;
+                        line-height: 30px;
+                        vertical-align: middle;
+                        text-align: center;
+                }
+
+#topMenu .menuLink {
+                        text-decoration:none;
+                        color: white;
+                        display: block;
+                        width: 110px;
+                        font-size: 15px;
+                        font-weight: bold;
+                        font-family: "Trebuchet MS";
+                }
+#topMenu .menuLink:hover {
+                        color: red;
+                        background-color: #4d4d4d;
+                }
+</style>    
+
+<link href="../_shared/demo.css" rel="stylesheet" type="text/css">
+<script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+    
+<script>
+var stage, output;
+		
+function init() {
+    setTimeout(wakeUpUser1, 60000);
+    function wakeUpUser1() {
+        alert("Focus on your studying!");
+    }
+    
+    setTimeout(wakeUpUser2, 120000);
+    function wakeUpUser2() {
+        alert("Focus on your studying!");
+    }
+    
+    setTimeout(wakeUpUser3, 180000);
+    function wakeUpUser3() {
+        alert("Focus on your studying!");
+    }
+    
+    stage = new createjs.Stage("canvase");
+
+    stage.mouseMoveOutside = true; 
+
+    var circle = new createjs.Shape();
+    circle.graphics.beginFill("brown").drawCircle(0, 0, 50);
+
+    var label = new createjs.Text("Move", "bold 14px Arial", "#FFFFFF");
+    label.textAlign = "center";
+    label.y = -7;
+
+    var dragger = new createjs.Container();
+    dragger.x = dragger.y = 100;
+    dragger.addChild(circle, label);
+    stage.addChild(dragger);
+
+    dragger.on("pressmove",function(evt) {
+        evt.currentTarget.x = evt.stageX;
+        evt.currentTarget.y = evt.stageY;
+        stage.update();
+        alert("Your x-cordinate is " + dragger.x + " Your Y-coordinate is " + (Math.round(dragger.y)));
+    });
+
+    stage.update();
+}
+</script>
+</head>
+    
+<body onload="init();" style="background-color:#D4D4D4">
+    
+<h1>LMK : Learn Math easily with Kim</h1>
+    
+<nav id="topMenu" >
+		<ul>
+            <li><a class="menuLink" href="home.html">Home</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu1.html">Probability</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu2.html">Ratio</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu3.html">Shape</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu4.html">Coordinate</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu5.html">Property</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu6.html">Random</a></li>
+		</ul>
+</nav>
+    
+<h2>[Understanding coordinate]</h2>
+<canvas id="canvase" width="550" height="400" style="background-color:#ffffff"></canvas>
+<p>Move the circle freely, then you will get its X and Y coordinates.</p>
+    
+</body>
+</html>

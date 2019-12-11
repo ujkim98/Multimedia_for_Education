@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>    
+<meta charset="UTF-8">
+<title>LMK</title>
+    
+<style>
+    h1{
+        font-size: 40px;
+        text-decoration: underline;
+    }
+h2 {
+        color: saddlebrown;
+        font-size: 30px;
+    }
+p {
+        color: brown;
+        font-size: 20px;
+        font-weight: bold;
+    }
+#topMenu {
+                        height: 30px;
+                        width: 900px;
+                }
+
+#topMenu ul li {
+                        list-style: none;
+                        color: white;
+                        background-color: #2d2d2d;
+                        float: left;
+                        line-height: 30px;
+                        vertical-align: middle;
+                        text-align: center;
+                }
+
+#topMenu .menuLink {
+                        text-decoration:none;
+                        color: white;
+                        display: block;
+                        width: 110px;
+                        font-size: 15px;
+                        font-weight: bold;
+                        font-family: "Trebuchet MS";
+                }
+#topMenu .menuLink:hover {
+                        color: red;
+                        background-color: #4d4d4d;
+                }
+</style>
+
+<script>
+function init() {
+    setTimeout(wakeUpUser1, 60000);
+    function wakeUpUser1() {
+        alert("Focus on your studying!");
+    }
+    
+    setTimeout(wakeUpUser2, 120000);
+    function wakeUpUser2() {
+        alert("Focus on your studying!");
+    }
+    
+    setTimeout(wakeUpUser3, 180000);
+    function wakeUpUser3() {
+        alert("Focus on your studying!");
+    }
+}
+</script>
+    
+</head>
+    
+<body onload="init();" style="background-color:#D4D4D4">
+    
+    <h1>LMK : Learn Math easily with Kim</h1>
+    
+<nav id="topMenu" >
+		<ul>
+            <li><a class="menuLink" href="home.html">Home</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu1.html">Probability</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu2.html">Ratio</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu3.html">Shape</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu4.html">Coordinate</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu5.html">Property</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu6.html">Random</a></li>
+		</ul>
+</nav>
+    
+<h2>[High-Low Game : Understanding Probability]</h2> 
+<p id="output">A number between 0 and 99 is generated randomly.</p>
+<input id="input" type="text" placeholder="Can you guess..?">
+<button>Press</button>
+<script type="text/javascript">
+
+var mysteryNumber = Math.floor(Math.random() * 100);
+var playersGuess = 0;
+var probability = 1;
+
+var input = document.querySelector("#input");
+var output = document.querySelector("#output");
+
+var button = document.querySelector("button");
+button.style.cursor = "pointer";
+button.addEventListener("click", clickHandler, false);
+function clickHandler() { playGame();}
+function playGame() {
+playersGuess = parseInt(input.value);
+if(playersGuess > mysteryNumber)
+{ 
+    output.innerHTML = "Little bit high. Count : " + probability;
+    probability = probability+1;
+}
+else if(playersGuess < mysteryNumber)
+{ 
+    output.innerHTML = "Little bit low. Count : " + probability;
+    probability = probability+1;
+}
+else if(playersGuess === mysteryNumber)
+{ 
+    output.innerHTML = "Correct!";
+    alert("You tried " + probability + " times. " + "So your guessing probability : " + (Math.round((1/probability)*100)) + "%");
+    probability = 1;
+}
+}
+</script>
+    
+</body>
+</html>

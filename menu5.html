@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="authoring-tool" content="Adobe_Animate_CC">
+<title>LMK</title>
+
+<style>
+h1 {
+        font-size: 40px;
+        text-decoration: underline;
+    }
+h2 {
+        color: saddlebrown;
+        font-size: 30px;
+    }
+p {
+        color: brown;
+        font-size: 20px;
+        font-weight: bold;
+    }
+#topMenu {
+                        height: 30px;
+                        width: 900px;
+                }
+
+#topMenu ul li {
+                        list-style: none;
+                        color: white;
+                        background-color: #2d2d2d;
+                        float: left;
+                        line-height: 30px;
+                        vertical-align: middle;
+                        text-align: center;
+                }
+
+#topMenu .menuLink {
+                        text-decoration:none;
+                        color: white;
+                        display: block;
+                        width: 110px;
+                        font-size: 15px;
+                        font-weight: bold;
+                        font-family: "Trebuchet MS";
+                }
+#topMenu .menuLink:hover {
+                        color: red;
+                        background-color: #4d4d4d;
+                }
+</style>
+    
+<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+<script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+<script src="복어.js"></script>
+    
+<script>
+var canvas, stage, exportRoot, output;
+    
+function init() {
+    setTimeout(wakeUpUser1, 60000);
+    function wakeUpUser1() {
+        alert("Focus on your studying!");
+    }
+    
+    setTimeout(wakeUpUser2, 120000);
+    function wakeUpUser2() {
+        alert("Focus on your studying!");
+    }
+    
+    setTimeout(wakeUpUser3, 180000);
+    function wakeUpUser3() {
+        alert("Focus on your studying!");
+    }
+    
+	canvas = document.getElementById("canvas");
+	handleComplete();
+}
+    
+function handleComplete() {
+	exportRoot = new lib.복어();
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);	
+	
+	createjs.Ticker.setFPS(lib.properties.fps);
+	createjs.Ticker.addEventListener("tick", stage);	    
+    
+    var circle4 = new createjs.Shape();
+    circle4.graphics.beginFill("darkblue").drawCircle(0, 0, 20);
+	circle4.x = 80;
+	circle4.y = 410;
+			
+	circle4.on("click", function() {
+	   exportRoot.fish4_mc.scaleX = exportRoot.fish4_mc.scaleX*-1;
+	});
+    
+	stage.addChild(circle4);
+	stage.update();
+    
+    var label4 = new createjs.Text("Scale", "bold 14px Arial", "#FFFFFF");
+    label4.textAlign = "center";
+	label4.x = 80;
+    label4.y = 401;
+    stage.addChild(label4);
+    stage.update();
+    
+    var circle3 = new createjs.Shape();
+    circle3.graphics.beginFill("darkblue").drawCircle(0, 0, 20);
+	circle3.x = 219;
+	circle3.y = 300;
+			
+	circle3.on("click", function() {
+	   exportRoot.fish3_mc.alpha = exportRoot.fish3_mc.alpha - 0.2;
+	});
+			
+	stage.addChild(circle3);
+	stage.update();
+    
+    var label3 = new createjs.Text("-Alpha", "bold 12px Arial", "#FFFFFF");
+    label3.textAlign = "center";
+	label3.x = 219;
+    label3.y = 291;
+    stage.addChild(label3);
+    stage.update();
+    
+    var circle3_1 = new createjs.Shape();
+    circle3_1.graphics.beginFill("darkblue").drawCircle(0, 0, 20);
+	circle3_1.x = 261;
+	circle3_1.y = 300;
+			
+	circle3_1.on("click", function() {
+	   exportRoot.fish3_mc.alpha = exportRoot.fish3_mc.alpha + 0.2;
+	});
+			
+	stage.addChild(circle3_1);
+	stage.update();
+    
+    var label3_1 = new createjs.Text("+Alpha", "bold 12px Arial", "#FFFFFF");
+    label3_1.textAlign = "center";
+	label3_1.x = 261;
+    label3_1.y = 291;
+    stage.addChild(label3_1);
+    stage.update();
+    
+    var circle2 = new createjs.Shape();
+    circle2.graphics.beginFill("darkblue").drawCircle(0, 0, 20);
+	circle2.x = 354;
+	circle2.y = 200;
+			
+	circle2.on("click", function() {
+	   exportRoot.fish2_mc.scaleX *= 2.0;
+	});
+			
+	stage.addChild(circle2);
+	stage.update();
+    
+    var label2 = new createjs.Text("+Scale", "bold 12px Arial", "#FFFFFF");
+    label2.textAlign = "center";
+	label2.x = 354;
+    label2.y = 191;
+    stage.addChild(label2);
+    stage.update();
+    
+    var circle2_1 = new createjs.Shape();
+    circle2_1.graphics.beginFill("darkblue").drawCircle(0, 0, 20);
+	circle2_1.x = 396;
+	circle2_1.y = 200;
+			
+	circle2_1.on("click", function() {
+	   exportRoot.fish2_mc.scaleX *= 1/2;
+	});
+			
+	stage.addChild(circle2_1);
+	stage.update();
+    
+    var label2_1 = new createjs.Text("-Scale", "bold 12px Arial", "#FFFFFF");
+    label2_1.textAlign = "center";
+	label2_1.x = 396;
+    label2_1.y = 191;
+    stage.addChild(label2_1);
+    stage.update();
+    
+    var circle5 = new createjs.Shape();
+    circle5.graphics.beginFill("darkblue").drawCircle(0, 0, 20);
+	circle5.x = 410;
+	circle5.y = 380;
+			
+	circle5.on("click", function() {
+	   exportRoot.fish5_mc.rotation= exportRoot.fish5_mc.rotation + 45;
+	});
+			
+	stage.addChild(circle5);
+	stage.update();
+    
+    var label5 = new createjs.Text("Rotate", "bold 12px Arial", "#FFFFFF");
+    label5.textAlign = "center";
+	label5.x = 410;
+    label5.y = 371;
+    stage.addChild(label5);
+    stage.update();
+
+}
+</script>
+
+</head>
+<body onload="init();" style="background-color:#D4D4D4">
+
+<h1>LMK : Learn Math easily with Kim</h1>
+    
+<nav id="topMenu" >
+		<ul>
+            <li><a class="menuLink" href="home.html">Home</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu1.html">Probability</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu2.html">Ratio</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu3.html">Shape</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu4.html">Coordinate</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu5.html">Property</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu6.html">Random</a></li>
+		</ul>
+</nav>
+    
+<h2>[Controlling object's property]</h2>
+
+<canvas id="canvas" width="550" height="480" style="display: block; background-color:rgba(255, 255, 255, 1.00)"></canvas>
+<p>Press the buttons, then you can control objects' property such as scale, alpha value, angle.</p>
+    
+</body>
+</html>

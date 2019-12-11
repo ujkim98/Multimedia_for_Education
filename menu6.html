@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>    
+<meta charset="UTF-8">
+<title>LMK</title>
+    
+<style>
+h1{
+        font-size: 40px;
+        text-decoration: underline;
+    }
+h1.bridge{
+        font-size: 30px;
+        text-decoration: none;
+    }
+h2 {
+        color: saddlebrown;
+        font-size: 30px;
+    }
+#stage
+    {
+        display: block;
+        width: 550px;
+        height: 200px;
+        border: 1px dashed crimson;
+    }
+.card
+    {
+        display: block;
+        width: 100px;
+        height : 100px;
+        float : left;
+        margin-top:50px:
+        margin-left:25px;
+        background-color : #537ca6;
+    }
+h3
+    {
+        clear:left;
+        text-align:center;
+        font-size: 30px;
+        color: crimson;
+    }
+#topMenu {
+                        height: 30px;
+                        width: 900px;
+                }
+
+#topMenu ul li {
+                        list-style: none;
+                        color: white;
+                        background-color: #2d2d2d;
+                        float: left;
+                        line-height: 30px;
+                        vertical-align: middle;
+                        text-align: center;
+                }
+
+#topMenu .menuLink {
+                        text-decoration:none;
+                        color: white;
+                        display: block;
+                        width: 110px;
+                        font-size: 15px;
+                        font-weight: bold;
+                        font-family: "Trebuchet MS";
+                }
+#topMenu .menuLink:hover {
+                        color: red;
+                        background-color: #4d4d4d;
+                }
+</style>
+
+<script>
+function init() {
+    setTimeout(wakeUpUser1, 60000);
+    function wakeUpUser1() {
+        alert("Focus on your studying!");
+    }
+    
+    setTimeout(wakeUpUser2, 120000);
+    function wakeUpUser2() {
+        alert("Focus on your studying!");
+    }
+    
+    setTimeout(wakeUpUser3, 180000);
+    function wakeUpUser3() {
+        alert("Focus on your studying!");
+    }    
+}
+</script>
+    
+</head>
+    
+<body onload="init();" style="background-color:#D4D4D4">
+    
+<h1>LMK : Learn Math easily with Kim</h1>
+    
+<nav id="topMenu" >
+		<ul>
+            <li><a class="menuLink" href="home.html">Home</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu1.html">Probability</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu2.html">Ratio</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu3.html">Shape</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu4.html">Coordinate</a></li>
+			<li>|</li>
+            <li><a class="menuLink" href="menu5.html">Property</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="menu6.html">Random</a></li>
+		</ul>
+</nav>
+    
+<h2>[Random Game]</h2>
+<div id="stage">
+    <div class="card" id="d1">
+        <img onclick = "myClick(id)" id="1" src="coverImg.jpg" width="100" height="100" alt="klematis">
+    </div>
+    <div class="card" id="d2">
+        <img onclick = "myClick(id)" id="2" src="coverImg.jpg" width="100" height="100" alt="klematis">
+    </div>
+    <div class="card" id="d3">
+        <img onclick = "myClick(id)" id="3" src="coverImg.jpg" width="100" height="100" alt="klematis">
+    </div>
+    <div class="card" id="d4">
+        <img onclick = "myClick(id)" id="4" src="coverImg.jpg" width="100" height="100" alt="klematis">
+    </div>
+    <div class="card" id="d5">
+        <img onclick = "myClick(id)" id="5" src="coverImg.jpg" width="100" height="100" alt="klematis">
+    </div>
+    <h3>Do you want to be a good student?</h3>    
+</div>
+
+<script>
+    var slot=5;
+    var nArr=[];
+    var rNum;
+    
+    var guesses=0;
+    var hits=0;
+    var isSunk=false;
+    
+    var spots=[];
+    
+    for (var i=0; i<slot; i++){
+        nArr[i]=i+1;
+    }
+    
+    for(var j=slot; j>2; j--){
+        rNum=Math.floor(Math.random()*j);
+        
+        var idx=nArr[rNum];
+        var loca=idx.toString();
+        spots.push(loca);
+        
+        var str="d"+idx.toString();
+        
+        document.getElementById(str).style.backgroundImage="url('good.png')";
+        
+        while(rNum<j-1){
+            nArr[rNum]=nArr[rNum+1];
+            rNum++;
+        }    
+    }
+    
+    function myClick(id){
+        var image=document.getElementById(id);
+        image.parentNode.removeChild(image);
+        guesses=guesses+1;
+        if(spots[0]==id || spots[1] == id || spots[2]==id)
+        {
+            hits=hits+1;
+            if(hits==3){
+                isSunk=true;
+                alert("You got it all!" + " Your guessing accuracy : " + (3/guesses));
+            }
+        }else
+        {
+            var m="d"+id.toString();
+            document.getElementById(m).style.backgroundImage="url('miss.png')";
+        }
+    }
+</script>
+    
+<h1 class="bridge">You did a good job!</h1>
+<video controls autoplay loop>
+   <source src="video.mp4" type="video/mp4"> 
+</video>
+
+</body>
+</html>
